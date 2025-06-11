@@ -1,0 +1,16 @@
+# Build output
+bin/
+obj/
+
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.backup
+terraform.tfvars
+
+# VS Code settings
+.vscode/
+
+# User-specific files
+*.user
+*.suo
