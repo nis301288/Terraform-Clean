@@ -6,7 +6,7 @@ obj/
 .terraform/
 *.tfstate
 *.tfstate.backup
-terraform.tfvars
+terraform.tfvarscd
 
 # VS Code settings
 .vscode/
