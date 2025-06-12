@@ -10,30 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: ⬇️ Checkout code
       uses: actions/checkout@v3
 
-    - name: Setup .NET SDK
+    - name: 🛠️ Setup .NET 8.0 SDK
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '6.0.x'   # Change to your .NET version if needed
+        dotnet-version: '8.0.x'   # Matches your SDK version
 
-    - name: Restore dependencies
+    - name: 📦 Restore dependencies
       run: dotnet restore
 
-    - name: Build project
+    - name: 🧱 Build project
       run: dotnet build --configuration Release --no-restore
 
-    # Optional: Run tests
-    #- name: Run tests
-    #  run: dotnet test --no-build --verbosity normal
-
-    - name: Publish project
+    - name: 🚀 Publish project
       run: dotnet publish --configuration Release --output ./publish --no-build
 
-    - name: Deploy to Azure Web App
+    - name: 🌐 Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+        app-name: ${{ secrets.AZURE_WEBAPP_NAME }}  # e.g., TerraformApp-app
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ./publish

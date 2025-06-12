@@ -13,6 +13,8 @@ bfg-1.15.0.jar
 
 # Ignore Terraform.git folder
 Terraform.git/
+Terraform/
+
 
 # Ignore CleanRepo folder
 CleanRepo/
