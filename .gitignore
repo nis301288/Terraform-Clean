@@ -5,10 +5,17 @@ obj/
 # Terraform files
 .terraform/
 *.tfstate
-*.bfg-1.15.0.jar
 *.tfstate.backup
-*.Terraform.git/
 terraform.tfvars
+
+# Ignore your jar file
+bfg-1.15.0.jar
+
+# Ignore Terraform.git folder
+Terraform.git/
+
+# Ignore CleanRepo folder
+CleanRepo/
 
 # VS Code settings
 .vscode/
