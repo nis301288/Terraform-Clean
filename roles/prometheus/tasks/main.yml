@@ -26,8 +26,11 @@
     dest: /opt/
     remote_src: yes
 
-- name: Move binaries
-  command: mv /opt/prometheus-2.51.2.linux-amd64/{prometheus,promtool} /usr/local/bin/
+- name: Move prometheus binary
+  command: mv /opt/prometheus-2.51.2.linux-amd64/prometheus /usr/local/bin/
+
+- name: Move promtool binary
+  command: mv /opt/prometheus-2.51.2.linux-amd64/promtool /usr/local/bin/
 
 - name: Create Prometheus service
   copy:
