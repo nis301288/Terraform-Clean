@@ -16,7 +16,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseOpenTelemetryPrometheusScrapingEndpoint();
 
 app.UseRouting();
 
@@ -29,8 +28,6 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 // Expose Prometheus metrics endpoint at /metrics
-app.MapMetrics();
+app.MapMetrics(); // this replaces UseMetricServer()
 
 app.Run();
-
-app.UseMetricServer(); 
