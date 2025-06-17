@@ -32,3 +32,5 @@ app.MapRazorPages();
 app.MapMetrics();
 
 app.Run();
+
+app.UseMetricServer(); 
