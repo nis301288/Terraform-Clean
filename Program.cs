@@ -1,3 +1,5 @@
+using Prometheus;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,17 +11,24 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
 
 app.UseRouting();
 
+// Prometheus middleware to collect default HTTP metrics
+app.UseHttpMetrics();
+
 app.UseAuthorization();
 
+// Map Razor Pages
 app.MapRazorPages();
+
+// Expose Prometheus metrics endpoint at /metrics
+app.MapMetrics();
 
 app.Run();

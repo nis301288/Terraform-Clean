@@ -1,0 +1,5 @@
+- name: Install Grafana on grafana VM
+  hosts: grafana
+  become: yes
+  roles:
+    - grafana
