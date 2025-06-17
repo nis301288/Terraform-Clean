@@ -32,6 +32,24 @@
 - name: Move promtool binary
   command: mv /opt/prometheus-2.51.2.linux-amd64/promtool /usr/local/bin/
 
+- name: Add Prometheus config with Azure App Service target
+  copy:
+    dest: /opt/prometheus-2.51.2.linux-amd64/prometheus.yml
+    content: |
+      global:
+        scrape_interval: 15s
+
+      scrape_configs:
+        - job_name: 'prometheus'
+          static_configs:
+            - targets: ['localhost:9090']
+
+        - job_name: 'terraformapp-dotnet-app'
+          metrics_path: /metrics
+          scheme: https
+          static_configs:
+            - targets: ['terraformapp-app.azurewebsites.net']
+
 - name: Create Prometheus service
   copy:
     dest: /etc/systemd/system/prometheus.service
